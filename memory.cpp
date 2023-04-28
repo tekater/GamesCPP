@@ -6,7 +6,7 @@
 using namespace std;
 
 const int size = 30;
-
+	
 int main()
 {
 	setlocale(0, "");
@@ -22,7 +22,7 @@ int main()
 	cout << "\n\n\nВыберите размеры поля:\n[1] - 2x5\n[2] - 4x4\n[3] - 5x6 (будет очень долго)\n";
 
 
-	int num = 0; int num2 = 0; int count = 0; 
+	int num = 0; int num2 = 0; int count = 0;
 	int card = 0; int point = 0; int counter = 0;
 
 	int arr[::size] = {};
@@ -135,9 +135,6 @@ int main()
 				}
 				cout << "\n\t\t\t\t\t-===- -===- -===- -===- -====-\n";
 			}
-			if (counter == 0) {
-			}
-			else { cout << "\n\t\t\t\t\t"; system("pause"); }
 		}
 		else if (box == 2) {
 			if (arrB[num] == true && arrB[num] == true) {
@@ -186,9 +183,6 @@ int main()
 				}
 				cout << "\n\t\t\t\t\t-====- -====- -====- -====-\n";
 			}
-			if (counter == 0) {
-			}
-			else { cout << "\n\t\t\t\t\t"; system("pause"); }
 		}
 		else if (box == 3) {
 			if (arrB[num] == true && arrB[num] == true) {
@@ -248,11 +242,15 @@ int main()
 				}
 				cout << "\n\t\t\t\t\t-====- -====- -====- -====- -====- -====-\n";
 			}
-			if (counter == 0) {
-			}
-			else { cout << "\n\t\t\t\t\t"; system("pause"); }
 		}
 
+		if (counter == 0) {}
+		else {
+			cout << "\n\t\t\t\t\tПродолжаем"; Sleep(300);
+			cout << ". "; Sleep(300);
+			cout << ". "; Sleep(300);
+			cout << ". ";
+		}
 
 		Sleep(1000);
 		arrB[num] = false;
@@ -414,24 +412,26 @@ int main()
 		else if (box == 3 && count == 30) {
 			time_t end = time(NULL);
 			cout << "\n\t\t\t\t\tПоздравляю вы выиграли!!!!!\n";
-			cout << "\n\t\t\t\t\tВремя: " << (end - begin) << endl;
+			cout << "\n\t\t\t\t\tВремя: " << (end - begin) / 60 << " минут " << (end - begin) % 60 << " секунд." << endl;
 			cout << "\n\t\t\t\t\tКоличество переворотов карт: " << counter << endl;
 			num = -5;
 			break;
 		}
-
 		cout << "\n\t\t\t\t\tВыберите ячейку: ";
 		cin >> num; num--;
 		cout << "\n\t\t\t\t\tВыберите 2 ячейку: ";
 		cin >> num2; num2--;
-
+		
 
 		counter++;
 		arrB[num] = true;
 		arrB[num2] = true;
 		if (num == num2) {
 			cout << "\n\t\t\t\t\tНельзя выбирать одну и ту же карту!!!\n";
-		}else if (arrB[num] != false && arrB[num2] != false && arr[num] == arr[num2]) {
+		}else if(box == 1 && (num > 10 || num2 > 10) || box == 2 && (num > 16 || num2 > 16) || box == 1 && (num > 30 || num2 > 30)) {
+				cout << "\n\t\t\t\t\tНельзя выходить за границы!!!";
+		}
+		else if (arrB[num] != false && arrB[num2] != false && arr[num] == arr[num2]) {
 			arr2[num] = arr[num];
 			arr2[num2] = arr[num2];
 			cout << "Вы угадали комбинацию!!!\n";
