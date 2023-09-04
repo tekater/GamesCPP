@@ -96,7 +96,6 @@ public:
             }
         }
     //};
-
     /*class Snake {
     protected:*/
         /*int tailX[100];
